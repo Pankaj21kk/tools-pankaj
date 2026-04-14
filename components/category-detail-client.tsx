@@ -332,7 +332,7 @@ export function CategoryDetailClient({ category }: { category: ToolCategory }) {
               return (
                 <div key={tool} className="rounded-2xl border border-zinc-200 bg-white/85 p-4 text-base font-medium text-zinc-800 shadow-sm transition dark:border-zinc-700 dark:bg-zinc-900/85 dark:text-zinc-100">
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                    <a href={getOfficialUrl(tool)} target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline break-words">
+                    <a href={getOfficialUrl(tool)} target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline wrap-break-word">
                       {tool}
                     </a>
                     <span className={`inline-flex w-fit rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${isFree ? "bg-zinc-100 text-zinc-700" : "bg-zinc-200 text-zinc-800"}`}>
@@ -372,7 +372,7 @@ export function CategoryDetailClient({ category }: { category: ToolCategory }) {
               {visibleAiTools.map((tool) => (
                 <div key={tool} className="rounded-2xl border border-zinc-200 bg-white/85 p-4 text-base font-medium text-zinc-900 shadow-sm transition dark:border-zinc-700 dark:bg-zinc-900/85 dark:text-zinc-100">
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                    <a href={getOfficialUrl(tool)} target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline break-words">
+                    <a href={getOfficialUrl(tool)} target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline wrap-break-word">
                       {tool}
                     </a>
                     <span className="inline-flex w-fit rounded-full bg-zinc-200 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-zinc-800 dark:bg-zinc-700 dark:text-zinc-200">
