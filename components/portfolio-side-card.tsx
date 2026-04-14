@@ -6,7 +6,7 @@ export function PortfolioSideCard() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <aside className="fixed bottom-4 right-4 z-40 hidden sm:block">
+    <aside className="fixed bottom-4 right-4 z-40 hidden md:block">
       <button
         type="button"
         onClick={() => setIsOpen((current) => !current)}

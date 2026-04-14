@@ -140,7 +140,7 @@ export function CategoryCard({ category }: { category: ToolCategory }) {
           </p>
         </div>
 
-        <div className="min-h-40 sm:min-h-48">
+        <div className="min-h-32 sm:min-h-48">
           <CategoryPreview category={category} />
         </div>
       </div>
