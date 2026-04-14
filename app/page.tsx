@@ -150,13 +150,13 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen bg-(--brand-50) text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+    <div className="relative min-h-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
       <Script
         id="home-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(seoJsonLd) }}
       />
-      <ScrollProgress className="h-1 from-[#00B4D8] via-[#48CAE4] to-[#ADE8F4] dark:from-zinc-200 dark:via-zinc-500 dark:to-zinc-700" />
+      <ScrollProgress className="h-1 from-zinc-900 via-zinc-600 to-zinc-300 dark:from-zinc-200 dark:via-zinc-500 dark:to-zinc-700" />
 
       <main className="relative z-10 mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
         <section className="rounded-3xl border border-zinc-300 bg-white p-5 shadow-[0_14px_36px_rgba(20,20,20,0.08)] backdrop-blur sm:p-8 dark:border-zinc-700 dark:bg-zinc-900">
@@ -171,21 +171,21 @@ export default function Home() {
             <Button
               asChild
               size="sm"
-              className="rounded-full bg-[#2563eb] px-4 font-semibold text-white shadow-[0_8px_20px_rgba(37,99,235,0.35)] transition active:scale-[0.97] hover:bg-[#1d4ed8]"
+              className="rounded-full bg-zinc-900 px-4 font-semibold text-white shadow-[0_8px_20px_rgba(20,20,20,0.24)] transition active:scale-[0.97] hover:bg-zinc-700"
             >
               <a href="#catalog">Browse categories</a>
             </Button>
             <Button
               asChild
               size="sm"
-              className="rounded-full bg-[#16a34a] px-4 font-semibold text-white shadow-[0_8px_20px_rgba(22,163,74,0.35)] transition active:scale-[0.97] hover:bg-[#15803d]"
+              className="rounded-full bg-zinc-200 px-4 font-semibold text-zinc-900 shadow-[0_8px_20px_rgba(20,20,20,0.12)] transition active:scale-[0.97] hover:bg-zinc-300 dark:bg-zinc-100"
             >
               <a href="/library?tab=favorites">Open favorites</a>
             </Button>
           </div>
 
-          <label className="mt-5 flex items-center gap-2 rounded-xl border border-[#90E0EF] bg-white px-3 py-2 shadow-[0_8px_20px_rgba(20,20,20,0.08)] transition focus-within:border-[#00B4D8] focus-within:ring-2 focus-within:ring-[#48CAE4]/35 dark:border-zinc-700 dark:bg-zinc-900 dark:focus-within:border-zinc-500 dark:focus-within:ring-zinc-500/30">
-            <Search className="size-4 text-[#00B4D8] dark:text-zinc-300" />
+          <label className="mt-5 flex items-center gap-2 rounded-xl border border-zinc-300 bg-white px-3 py-2 shadow-[0_8px_20px_rgba(20,20,20,0.08)] transition focus-within:border-zinc-500 focus-within:ring-2 focus-within:ring-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:focus-within:border-zinc-500 dark:focus-within:ring-zinc-500/30">
+            <Search className="size-4 text-zinc-500 dark:text-zinc-300" />
             <input
               value={search}
               onChange={(event) => setSearch(event.target.value)}
@@ -201,7 +201,7 @@ export default function Home() {
               onClick={() => setSortMode("default")}
               size="sm"
               variant={sortMode === "default" ? "default" : "outline"}
-              className={sortMode === "default" ? "rounded-full bg-[#2563eb] text-white hover:bg-[#1d4ed8]" : "rounded-full"}
+              className={sortMode === "default" ? "rounded-full bg-zinc-900 text-white hover:bg-zinc-700" : "rounded-full"}
             >
               Default
             </Button>
@@ -210,7 +210,7 @@ export default function Home() {
               onClick={() => setSortMode("az")}
               size="sm"
               variant={sortMode === "az" ? "default" : "outline"}
-              className={sortMode === "az" ? "rounded-full bg-[#16a34a] text-white hover:bg-[#15803d]" : "rounded-full"}
+              className={sortMode === "az" ? "rounded-full bg-zinc-800 text-white hover:bg-zinc-700" : "rounded-full"}
             >
               A-Z
             </Button>
@@ -219,7 +219,7 @@ export default function Home() {
               onClick={() => setSortMode("popular")}
               size="sm"
               variant={sortMode === "popular" ? "default" : "outline"}
-              className={sortMode === "popular" ? "rounded-full bg-[#dc2626] text-white hover:bg-[#b91c1c]" : "rounded-full"}
+              className={sortMode === "popular" ? "rounded-full bg-zinc-700 text-white hover:bg-zinc-600" : "rounded-full"}
             >
               Popular
             </Button>
@@ -227,7 +227,7 @@ export default function Home() {
 
           {search.trim() ? (
             <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_280px]">
-              <div id="search-results" className="rounded-2xl border border-[#90E0EF] bg-[#E0FBFC] p-4 dark:border-zinc-700 dark:bg-zinc-950">
+              <div id="search-results" className="rounded-2xl border border-zinc-300 bg-zinc-100 p-4 dark:border-zinc-700 dark:bg-zinc-950">
                 <div className="flex items-center gap-2 text-sm font-semibold text-zinc-700 dark:text-zinc-200">
                   <Search className="size-4" /> Live tool results
                 </div>
@@ -242,14 +242,14 @@ export default function Home() {
                             {tool}
                           </a>
                           <div className="flex flex-wrap items-center justify-end gap-1">
-                            <Button type="button" size="xs" variant="outline" onClick={() => navigator.clipboard.writeText(tool)} className="rounded-full transition active:scale-[0.96] hover:border-[#00B4D8] hover:text-[#00B4D8]">
+                            <Button type="button" size="xs" variant="outline" onClick={() => navigator.clipboard.writeText(tool)} className="rounded-full transition active:scale-[0.96] hover:border-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100">
                               Copy
                             </Button>
-                            <Button type="button" size="xs" variant="outline" onClick={() => toggleFavorite(tool)} className={`rounded-full transition active:scale-[0.96] ${favorites.includes(tool) ? "border-[#dc2626] bg-[#dc2626]/10 text-[#b91c1c]" : "hover:border-[#dc2626] hover:text-[#b91c1c]"}`}>
+                            <Button type="button" size="xs" variant="outline" onClick={() => toggleFavorite(tool)} className={`rounded-full transition active:scale-[0.96] ${favorites.includes(tool) ? "border-zinc-900 bg-zinc-900/10 text-zinc-900 dark:border-zinc-200 dark:bg-zinc-200/10 dark:text-zinc-100" : "hover:border-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"}`}>
                               <Bookmark className="mr-1 inline size-3" />
                               Favorite
                             </Button>
-                            <Button type="button" size="xs" variant="outline" onClick={() => toggleSaved(tool)} className={`rounded-full transition active:scale-[0.96] ${savedTools.includes(tool) ? "border-[#2563eb] bg-[#2563eb]/10 text-[#1d4ed8]" : "hover:border-[#2563eb] hover:text-[#1d4ed8]"}`}>
+                            <Button type="button" size="xs" variant="outline" onClick={() => toggleSaved(tool)} className={`rounded-full transition active:scale-[0.96] ${savedTools.includes(tool) ? "border-zinc-700 bg-zinc-700/10 text-zinc-900 dark:border-zinc-300 dark:bg-zinc-300/10 dark:text-zinc-100" : "hover:border-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"}`}>
                               Saved
                             </Button>
                           </div>
@@ -318,7 +318,7 @@ export default function Home() {
         </section>
 
         <section className="mt-6 rounded-3xl border border-zinc-300 bg-white p-4 shadow-[0_12px_30px_rgba(20,20,20,0.08)] dark:border-zinc-700 dark:bg-zinc-900">
-          <div className="rounded-2xl bg-[#00B4D8] p-4 text-white">
+          <div className="rounded-2xl bg-zinc-900 p-4 text-white">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/80">Popular Tools</p>
             <h2 className="mt-1 text-xl font-semibold">Quick carousel-style strip for trending picks</h2>
           </div>

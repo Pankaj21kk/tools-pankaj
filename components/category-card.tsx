@@ -10,16 +10,16 @@ import { ScrollVelocityRow } from "@/components/ui/scroll-based-velocity";
 import type { ToolCategory } from "@/lib/tool-data";
 
 const categoryBorderMap: Record<string, string> = {
-  "video-editing": "border-[#00B4D8]",
-  "ui-ux": "border-[#48CAE4]",
-  "software-development": "border-[#90E0EF]",
-  researcher: "border-[#ADE8F4]",
-  "game-development": "border-[#C2DFE3]",
-  games: "border-[#CAF0F8]",
+  "video-editing": "border-zinc-400",
+  "ui-ux": "border-zinc-500",
+  "software-development": "border-zinc-300",
+  researcher: "border-zinc-400",
+  "game-development": "border-zinc-500",
+  games: "border-zinc-300",
 };
 
 function getCategoryBorder(categoryId: string) {
-  return categoryBorderMap[categoryId] ?? "border-[#90E0EF]";
+  return categoryBorderMap[categoryId] ?? "border-zinc-400";
 }
 
 function CategoryPreview({ category }: { category: ToolCategory }) {

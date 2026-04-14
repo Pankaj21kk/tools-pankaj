@@ -35,8 +35,8 @@ export function DecorativeBackground() {
 
   return (
     <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-      <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-[#48CAE4]/25 blur-3xl" />
-      <div className="absolute right-0 top-40 h-80 w-80 rounded-full bg-[#00B4D8]/20 blur-3xl" />
+      <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-zinc-300/30 blur-3xl" />
+      <div className="absolute right-0 top-40 h-80 w-80 rounded-full bg-zinc-400/20 blur-3xl" />
       <div className="absolute inset-0 bg-linear-to-b from-transparent via-white/10 to-transparent dark:via-white/5" />
 
       {showGlobe ? (

@@ -323,8 +323,8 @@ export function CategoryDetailClient({ category }: { category: ToolCategory }) {
         <article className="rounded-3xl border border-zinc-300 bg-linear-to-br from-white via-zinc-50 to-zinc-100 p-6 dark:border-zinc-700 dark:from-zinc-900 dark:via-zinc-900 dark:to-zinc-800">
           <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100">Software Tools</h2>
           <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold">
-            <span className="rounded-full bg-[#dcfce7] px-3 py-1 text-[#166534] dark:bg-zinc-800 dark:text-zinc-200">Free {freeTools.length}</span>
-            <span className="rounded-full bg-[#fee2e2] px-3 py-1 text-[#991b1b] dark:bg-zinc-700 dark:text-zinc-200">Paid {paidTools.length}</span>
+            <span className="rounded-full bg-zinc-100 px-3 py-1 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">Free {freeTools.length}</span>
+            <span className="rounded-full bg-zinc-200 px-3 py-1 text-zinc-800 dark:bg-zinc-700 dark:text-zinc-200">Paid {paidTools.length}</span>
           </div>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             {visibleSoftwareToolsWithSearch.map((tool) => {
@@ -335,12 +335,12 @@ export function CategoryDetailClient({ category }: { category: ToolCategory }) {
                     <a href={getOfficialUrl(tool)} target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline">
                       {tool}
                     </a>
-                    <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${isFree ? "bg-[#dcfce7] text-[#166534]" : "bg-[#fee2e2] text-[#991b1b]"}`}>
+                    <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${isFree ? "bg-zinc-100 text-zinc-700" : "bg-zinc-200 text-zinc-800"}`}>
                       {isFree ? "Free" : "Paid"}
                     </span>
                   </div>
                   <div className="mt-3 flex flex-wrap gap-2 text-[11px] font-semibold">
-                    <button type="button" onClick={() => copyToolLink(tool)} className="rounded-full border border-zinc-300 px-2 py-1 transition active:scale-[0.96] hover:border-[#2563eb] hover:text-[#1d4ed8] dark:border-zinc-600">
+                    <button type="button" onClick={() => copyToolLink(tool)} className="rounded-full border border-zinc-300 px-2 py-1 transition active:scale-[0.96] hover:border-zinc-500 hover:text-zinc-900 dark:border-zinc-600 dark:hover:text-zinc-100">
                       <Copy className="mr-1 inline size-3" />Copy
                     </button>
                     <a href={getOfficialUrl(tool)} target="_blank" rel="noopener noreferrer" className="rounded-full border border-zinc-300 px-2 py-1 dark:border-zinc-600">
@@ -349,11 +349,11 @@ export function CategoryDetailClient({ category }: { category: ToolCategory }) {
                     <button type="button" onClick={() => shareToolLink(tool)} className="rounded-full border border-zinc-300 px-2 py-1 dark:border-zinc-600">
                       <Share2 className="mr-1 inline size-3" />Share
                     </button>
-                    <button type="button" onClick={() => toggleFavorite(tool)} className={`rounded-full border px-2 py-1 transition active:scale-[0.96] ${favorites.includes(tool) ? "border-[#dc2626] bg-[#dc2626]/10 text-[#b91c1c]" : "border-zinc-300 hover:border-[#dc2626] hover:text-[#b91c1c] dark:border-zinc-600"}`}>
+                    <button type="button" onClick={() => toggleFavorite(tool)} className={`rounded-full border px-2 py-1 transition active:scale-[0.96] ${favorites.includes(tool) ? "border-zinc-900 bg-zinc-900/10 text-zinc-900 dark:border-zinc-200 dark:bg-zinc-200/10 dark:text-zinc-100" : "border-zinc-300 hover:border-zinc-500 hover:text-zinc-900 dark:border-zinc-600 dark:hover:text-zinc-100"}`}>
                       {favorites.includes(tool) ? <BookmarkCheck className="mr-1 inline size-3" /> : <Bookmark className="mr-1 inline size-3" />}
                       Favorite
                     </button>
-                    <button type="button" onClick={() => toggleSaved(tool)} className={`rounded-full border px-2 py-1 transition active:scale-[0.96] ${savedTools.includes(tool) ? "border-[#2563eb] bg-[#2563eb]/10 text-[#1d4ed8]" : "border-zinc-300 hover:border-[#2563eb] hover:text-[#1d4ed8] dark:border-zinc-600"}`}>
+                    <button type="button" onClick={() => toggleSaved(tool)} className={`rounded-full border px-2 py-1 transition active:scale-[0.96] ${savedTools.includes(tool) ? "border-zinc-700 bg-zinc-700/10 text-zinc-900 dark:border-zinc-300 dark:bg-zinc-300/10 dark:text-zinc-100" : "border-zinc-300 hover:border-zinc-500 hover:text-zinc-900 dark:border-zinc-600 dark:hover:text-zinc-100"}`}>
                       Saved
                     </button>
                   </div>
@@ -375,12 +375,12 @@ export function CategoryDetailClient({ category }: { category: ToolCategory }) {
                     <a href={getOfficialUrl(tool)} target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline">
                       {tool}
                     </a>
-                    <span className="rounded-full bg-[#dbeafe] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#1e3a8a]">
+                    <span className="rounded-full bg-zinc-200 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-zinc-800 dark:bg-zinc-700 dark:text-zinc-200">
                       AI
                     </span>
                   </div>
                   <div className="mt-3 flex flex-wrap gap-2 text-[11px] font-semibold">
-                    <button type="button" onClick={() => copyToolLink(tool)} className="rounded-full border border-zinc-300 px-2 py-1 transition active:scale-[0.96] hover:border-[#2563eb] hover:text-[#1d4ed8] dark:border-zinc-600">
+                    <button type="button" onClick={() => copyToolLink(tool)} className="rounded-full border border-zinc-300 px-2 py-1 transition active:scale-[0.96] hover:border-zinc-500 hover:text-zinc-900 dark:border-zinc-600 dark:hover:text-zinc-100">
                       <Copy className="mr-1 inline size-3" />Copy
                     </button>
                     <a href={getOfficialUrl(tool)} target="_blank" rel="noopener noreferrer" className="rounded-full border border-zinc-300 px-2 py-1 dark:border-zinc-600">
@@ -389,11 +389,11 @@ export function CategoryDetailClient({ category }: { category: ToolCategory }) {
                     <button type="button" onClick={() => shareToolLink(tool)} className="rounded-full border border-zinc-300 px-2 py-1 dark:border-zinc-600">
                       <Share2 className="mr-1 inline size-3" />Share
                     </button>
-                    <button type="button" onClick={() => toggleFavorite(tool)} className={`rounded-full border px-2 py-1 transition active:scale-[0.96] ${favorites.includes(tool) ? "border-[#dc2626] bg-[#dc2626]/10 text-[#b91c1c]" : "border-zinc-300 hover:border-[#dc2626] hover:text-[#b91c1c] dark:border-zinc-600"}`}>
+                    <button type="button" onClick={() => toggleFavorite(tool)} className={`rounded-full border px-2 py-1 transition active:scale-[0.96] ${favorites.includes(tool) ? "border-zinc-900 bg-zinc-900/10 text-zinc-900 dark:border-zinc-200 dark:bg-zinc-200/10 dark:text-zinc-100" : "border-zinc-300 hover:border-zinc-500 hover:text-zinc-900 dark:border-zinc-600 dark:hover:text-zinc-100"}`}>
                       {favorites.includes(tool) ? <BookmarkCheck className="mr-1 inline size-3" /> : <Bookmark className="mr-1 inline size-3" />}
                       Favorite
                     </button>
-                    <button type="button" onClick={() => toggleSaved(tool)} className={`rounded-full border px-2 py-1 transition active:scale-[0.96] ${savedTools.includes(tool) ? "border-[#2563eb] bg-[#2563eb]/10 text-[#1d4ed8]" : "border-zinc-300 hover:border-[#2563eb] hover:text-[#1d4ed8] dark:border-zinc-600"}`}>
+                    <button type="button" onClick={() => toggleSaved(tool)} className={`rounded-full border px-2 py-1 transition active:scale-[0.96] ${savedTools.includes(tool) ? "border-zinc-700 bg-zinc-700/10 text-zinc-900 dark:border-zinc-300 dark:bg-zinc-300/10 dark:text-zinc-100" : "border-zinc-300 hover:border-zinc-500 hover:text-zinc-900 dark:border-zinc-600 dark:hover:text-zinc-100"}`}>
                       Saved
                     </button>
                   </div>
