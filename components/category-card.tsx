@@ -43,7 +43,7 @@ function CategoryPreview({ category }: { category: ToolCategory }) {
 
   if (category.id === "video-editing" || category.id === "mechanical-engineering") {
     return (
-      <div className={`rounded-2xl border-2 ${getCategoryBorder(category.id)} bg-white p-2.5 sm:p-3 dark:bg-zinc-900`}>
+      <div className={`overflow-hidden rounded-2xl border-2 ${getCategoryBorder(category.id)} bg-white p-2.5 sm:p-3 dark:bg-zinc-900`}>
         <Marquee pauseOnHover className="[--duration:18s]">
           {category.softwareTools.slice(0, 6).map((tool) => (
             <div
@@ -63,7 +63,7 @@ function CategoryPreview({ category }: { category: ToolCategory }) {
 
   if (category.id === "software-development" || category.id === "cs-software-engineering") {
     return (
-      <div className={`rounded-2xl border-2 ${getCategoryBorder(category.id)} bg-white p-2.5 sm:p-3 dark:bg-zinc-900`}>
+      <div className={`overflow-hidden rounded-2xl border-2 ${getCategoryBorder(category.id)} bg-white p-2.5 sm:p-3 dark:bg-zinc-900`}>
         <ScrollVelocityRow baseVelocity={8} className="text-xs font-semibold uppercase tracking-[0.12em] text-zinc-500 dark:text-zinc-400">
           {category.softwareTools.slice(0, 5).map((tool) => (
             <span key={tool} className="mr-4 rounded-full border border-white/60 bg-white/85 px-3 py-1 text-zinc-700 shadow-sm dark:border-white/10 dark:bg-zinc-950/85 dark:text-zinc-100">
@@ -106,7 +106,7 @@ function CategoryPreview({ category }: { category: ToolCategory }) {
   }
 
   return (
-    <div className={`rounded-2xl border-2 ${getCategoryBorder(category.id)} bg-white p-3 sm:p-4 dark:bg-zinc-900`}>
+    <div className={`overflow-hidden rounded-2xl border-2 ${getCategoryBorder(category.id)} bg-white p-3 sm:p-4 dark:bg-zinc-900`}>
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">
         Total Tools
       </p>
@@ -122,9 +122,9 @@ export function CategoryCard({ category }: { category: ToolCategory }) {
   return (
     <Link
       href={`/categories/${category.id}`}
-      className="group block w-full rounded-3xl border border-zinc-300 bg-white p-4 shadow-[0_12px_30px_rgba(20,20,20,0.08)] transition hover:-translate-y-1 hover:border-zinc-500 hover:shadow-[0_16px_34px_rgba(20,20,20,0.12)] sm:p-5 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:border-zinc-400"
+      className="group block w-full max-w-full overflow-hidden rounded-3xl border border-zinc-300 bg-white p-4 shadow-[0_12px_30px_rgba(20,20,20,0.08)] transition hover:-translate-y-1 hover:border-zinc-500 hover:shadow-[0_16px_34px_rgba(20,20,20,0.12)] sm:p-5 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:border-zinc-400"
     >
-      <div className={`grid gap-3 rounded-lg border-2 ${getCategoryBorder(category.id)} bg-white p-3 shadow-sm sm:gap-5 sm:p-4 md:grid-cols-[1fr_220px] md:items-center lg:grid-cols-[1fr_260px] dark:bg-zinc-900`}>
+      <div className={`grid max-w-full gap-3 overflow-hidden rounded-lg border-2 ${getCategoryBorder(category.id)} bg-white p-3 shadow-sm sm:gap-5 sm:p-4 md:grid-cols-[1fr_220px] md:items-center lg:grid-cols-[1fr_260px] dark:bg-zinc-900`}>
         <div className="min-w-0">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">
             {category.softwareTools.length + category.aiTools.length} tools
@@ -140,7 +140,7 @@ export function CategoryCard({ category }: { category: ToolCategory }) {
           </p>
         </div>
 
-        <div className="min-h-28 sm:min-h-40 md:min-h-36 lg:min-h-48">
+        <div className="min-h-28 min-w-0 overflow-hidden sm:min-h-40 md:min-h-36 lg:min-h-48">
           <CategoryPreview category={category} />
         </div>
       </div>
