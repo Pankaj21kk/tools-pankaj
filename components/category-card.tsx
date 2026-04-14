@@ -10,16 +10,16 @@ import { ScrollVelocityRow } from "@/components/ui/scroll-based-velocity";
 import type { ToolCategory } from "@/lib/tool-data";
 
 const categoryBorderMap: Record<string, string> = {
-  "video-editing": "border-[#2563eb]/60",
-  "ui-ux": "border-[#7c3aed]/60",
-  "software-development": "border-[#16a34a]/60",
-  researcher: "border-[#f59e0b]/60",
-  "game-development": "border-[#dc2626]/60",
-  games: "border-[#0f766e]/60",
+  "video-editing": "border-[#00B4D8]",
+  "ui-ux": "border-[#48CAE4]",
+  "software-development": "border-[#90E0EF]",
+  researcher: "border-[#ADE8F4]",
+  "game-development": "border-[#C2DFE3]",
+  games: "border-[#CAF0F8]",
 };
 
 function getCategoryBorder(categoryId: string) {
-  return categoryBorderMap[categoryId] ?? "border-zinc-400";
+  return categoryBorderMap[categoryId] ?? "border-[#90E0EF]";
 }
 
 function CategoryPreview({ category }: { category: ToolCategory }) {
@@ -122,17 +122,17 @@ export function CategoryCard({ category }: { category: ToolCategory }) {
   return (
     <Link
       href={`/categories/${category.id}`}
-      className="group block w-full rounded-3xl border border-zinc-300 bg-white p-5 shadow-[0_12px_30px_rgba(20,20,20,0.08)] transition hover:-translate-y-1 hover:border-zinc-500 hover:shadow-[0_16px_34px_rgba(20,20,20,0.12)] dark:border-zinc-700 dark:bg-zinc-900 dark:hover:border-zinc-400"
+      className="group block w-full rounded-3xl border border-zinc-300 bg-white p-4 shadow-[0_12px_30px_rgba(20,20,20,0.08)] transition hover:-translate-y-1 hover:border-zinc-500 hover:shadow-[0_16px_34px_rgba(20,20,20,0.12)] sm:p-5 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:border-zinc-400"
     >
-      <div className={`grid gap-6 rounded-lg border-2 ${getCategoryBorder(category.id)} bg-white p-4 shadow-sm md:grid-cols-[1fr_240px] md:items-center dark:bg-zinc-900`}>
-        <div>
+      <div className={`grid gap-4 rounded-lg border-2 ${getCategoryBorder(category.id)} bg-white p-3 shadow-sm sm:gap-5 sm:p-4 lg:grid-cols-[1fr_260px] lg:items-center dark:bg-zinc-900`}>
+        <div className="min-w-0">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">
             {category.softwareTools.length + category.aiTools.length} tools
           </p>
-          <h2 className="mt-2 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+          <h2 className="mt-2 text-xl font-bold text-zinc-900 sm:text-2xl dark:text-zinc-100">
             {category.title}
           </h2>
-          <p className="mt-2 text-sm leading-7 text-zinc-700 dark:text-zinc-300">
+          <p className="mt-2 text-sm leading-6 text-zinc-700 sm:leading-7 dark:text-zinc-300">
             {category.usedFor}
           </p>
           <p className="mt-3 text-sm font-semibold text-zinc-700 group-hover:underline dark:text-zinc-300">
@@ -140,7 +140,9 @@ export function CategoryCard({ category }: { category: ToolCategory }) {
           </p>
         </div>
 
-        <CategoryPreview category={category} />
+        <div className="min-h-40 sm:min-h-48">
+          <CategoryPreview category={category} />
+        </div>
       </div>
     </Link>
   );

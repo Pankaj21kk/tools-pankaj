@@ -13,7 +13,7 @@ export async function GET() {
           flexDirection: "column",
           justifyContent: "space-between",
           background:
-            "radial-gradient(circle at 12% 16%, #f5e9d8 0%, transparent 40%), radial-gradient(circle at 88% 20%, #d5e5ff 0%, transparent 35%), linear-gradient(145deg, #f59e0b 0%, #f97316 48%, #0ea5e9 100%)",
+            "radial-gradient(circle at 12% 16%, #E0FBFC 0%, transparent 40%), radial-gradient(circle at 88% 20%, #CAF0F8 0%, transparent 35%), linear-gradient(145deg, #ADE8F4 0%, #48CAE4 48%, #00B4D8 100%)",
           color: "#111827",
           padding: "64px",
           fontFamily: "Inter, system-ui, sans-serif",
