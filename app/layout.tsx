@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
-import { GlobalStickyNav } from "@/components/global-sticky-nav";
+import { AppSidebar } from "@/components/app-sidebar";
 import { PortfolioSideCard } from "@/components/portfolio-side-card";
 import { SiteFooter } from "@/components/site-footer";
+import { Globe } from "@/components/ui/globe";
+import { MacbookScroll } from "@/components/ui/macbook-scroll";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -82,7 +84,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#fefcf7",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#E0FBFC" },
+    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
+  ],
 };
 
 export default function RootLayout({
@@ -95,12 +100,28 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#fefcf7] text-zinc-900">
-        <div className="min-h-full flex flex-col">
-          <GlobalStickyNav />
+      <body className="relative min-h-full overflow-x-hidden flex flex-col bg-[var(--brand-50)] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-[0.14] dark:opacity-[0.18]">
+          <div className="absolute left-1/2 top-24 hidden -translate-x-1/2 md:block">
+            <Globe className="h-150 w-150 opacity-80" />
+          </div>
+          <div className="absolute inset-x-0 top-10 hidden md:block">
+            <MacbookScroll
+              src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1800&q=80"
+              title={<span className="text-zinc-900 dark:text-zinc-100">Pankaj Tools</span>}
+              showGradient={false}
+            />
+          </div>
+          <div className="absolute inset-0 bg-linear-to-b from-transparent via-white/10 to-transparent dark:via-white/5 md:hidden" />
+        </div>
+
+        <div className="relative z-10 min-h-full flex flex-col">
+          <AppSidebar />
           <PortfolioSideCard />
-          <div className="flex-1 pt-20">{children}</div>
-          <SiteFooter />
+          <div className="flex-1 md:pl-18">
+            {children}
+            <SiteFooter />
+          </div>
         </div>
       </body>
     </html>

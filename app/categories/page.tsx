@@ -24,13 +24,8 @@ export const metadata: Metadata = {
 
 export default function CategoriesPage() {
   return (
-    <main className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-bold text-zinc-900 sm:text-4xl dark:text-zinc-100">All Categories</h1>
-      <p className="mt-2 text-zinc-700 dark:text-zinc-300">
-        Open a category to see complete tool cards and official links.
-      </p>
-
-      <section className="mt-6 grid gap-4">
+    <main className="mx-auto w-full max-w-6xl bg-zinc-50 px-4 py-8 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 sm:px-6 lg:px-8">
+      <section className="grid gap-4">
         {categories.map((category) => (
           <CategoryCard key={category.id} category={category} />
         ))}

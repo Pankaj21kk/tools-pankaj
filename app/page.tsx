@@ -1,13 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Script from "next/script";
 import { Bookmark, Search, Sparkles, TrendingUp } from "lucide-react";
 
 import { CategoryCard } from "@/components/category-card";
 import { Button } from "@/components/ui/button";
 import { Marquee } from "@/components/ui/marquee";
-import { NumberTicker } from "@/components/ui/number-ticker";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { categories, getOfficialUrl } from "@/lib/tool-data";
 
@@ -33,6 +32,34 @@ export default function Home() {
   const [sortMode, setSortMode] = useState<"default" | "az" | "popular">("default");
   const [favorites, setFavorites] = useState<string[]>([]);
   const [savedTools, setSavedTools] = useState<string[]>([]);
+  const [statsReady, setStatsReady] = useState(false);
+
+  useEffect(() => {
+    try {
+      const rawFavorites = localStorage.getItem("tool-favorites");
+      const rawSaved = localStorage.getItem("tool-saved");
+
+      setFavorites(rawFavorites ? (JSON.parse(rawFavorites) as string[]) : []);
+      setSavedTools(rawSaved ? (JSON.parse(rawSaved) as string[]) : []);
+    } catch {
+      setFavorites([]);
+      setSavedTools([]);
+    } finally {
+      setStatsReady(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!statsReady) return;
+
+    localStorage.setItem("tool-favorites", JSON.stringify(favorites));
+    localStorage.setItem("tool-saved", JSON.stringify(savedTools));
+    window.dispatchEvent(
+      new CustomEvent("tool-stats-updated", {
+        detail: { favorites: favorites.length, saved: savedTools.length },
+      })
+    );
+  }, [favorites, savedTools, statsReady]);
 
   const filteredCategories = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -123,7 +150,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+    <div className="relative min-h-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
       <Script
         id="home-jsonld"
         type="application/ld+json"
@@ -131,14 +158,8 @@ export default function Home() {
       />
       <ScrollProgress className="h-1 from-zinc-800 via-zinc-500 to-zinc-300 dark:from-zinc-200 dark:via-zinc-500 dark:to-zinc-700" />
 
-      <main className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+      <main className="relative z-10 mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
         <section className="rounded-3xl border border-zinc-300 bg-white p-5 shadow-[0_14px_36px_rgba(20,20,20,0.08)] backdrop-blur sm:p-8 dark:border-zinc-700 dark:bg-zinc-900">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="inline-flex rounded-full border border-zinc-300 bg-zinc-100 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-800 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200">
-              Pankaj Portfolio
-            </p>
-          </div>
-
           <h1 className="mt-4 text-3xl font-bold leading-tight sm:text-5xl">
             Explore Professional Tool Categories
           </h1>
@@ -147,16 +168,24 @@ export default function Home() {
           </p>
 
           <div className="mt-5 flex flex-wrap gap-2">
-            <Button asChild variant="default" size="sm">
-              <a href="#catalog">View catalog sections</a>
+            <Button
+              asChild
+              size="sm"
+              className="rounded-full bg-[#2563eb] px-4 font-semibold text-white shadow-[0_8px_20px_rgba(37,99,235,0.35)] transition active:scale-[0.97] hover:bg-[#1d4ed8]"
+            >
+              <a href="#catalog">Browse categories</a>
             </Button>
-            <Button asChild variant="outline" size="sm">
-              <a href="#search-results">Jump to results</a>
+            <Button
+              asChild
+              size="sm"
+              className="rounded-full bg-[#16a34a] px-4 font-semibold text-white shadow-[0_8px_20px_rgba(22,163,74,0.35)] transition active:scale-[0.97] hover:bg-[#15803d]"
+            >
+              <a href="/library?tab=favorites">Open favorites</a>
             </Button>
           </div>
 
-          <label className="mt-5 flex items-center gap-2 rounded-xl border border-zinc-300 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-900">
-            <Search className="size-4 text-zinc-500 dark:text-zinc-400" />
+          <label className="mt-5 flex items-center gap-2 rounded-xl border border-zinc-300 bg-white px-3 py-2 shadow-[0_8px_20px_rgba(20,20,20,0.08)] transition focus-within:border-[#2563eb] focus-within:ring-2 focus-within:ring-[#2563eb]/35 dark:border-zinc-700 dark:bg-zinc-900 dark:focus-within:border-zinc-500 dark:focus-within:ring-zinc-500/30">
+            <Search className="size-4 text-[#2563eb] dark:text-zinc-300" />
             <input
               value={search}
               onChange={(event) => setSearch(event.target.value)}
@@ -167,15 +196,33 @@ export default function Home() {
 
           <div className="mt-4 flex flex-wrap items-center gap-2 text-sm font-semibold text-zinc-700 dark:text-zinc-200">
             <span className="mr-2 text-xs uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">Sort categories</span>
-            <button type="button" onClick={() => setSortMode("default")} className={`rounded-full border px-3 py-1.5 ${sortMode === "default" ? "border-zinc-900 bg-zinc-900 text-white dark:border-zinc-100 dark:bg-zinc-100 dark:text-zinc-900" : "border-zinc-300 bg-white text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"}`}>
+            <Button
+              type="button"
+              onClick={() => setSortMode("default")}
+              size="sm"
+              variant={sortMode === "default" ? "default" : "outline"}
+              className={sortMode === "default" ? "rounded-full bg-[#2563eb] text-white hover:bg-[#1d4ed8]" : "rounded-full"}
+            >
               Default
-            </button>
-            <button type="button" onClick={() => setSortMode("az")} className={`rounded-full border px-3 py-1.5 ${sortMode === "az" ? "border-zinc-900 bg-zinc-900 text-white dark:border-zinc-100 dark:bg-zinc-100 dark:text-zinc-900" : "border-zinc-300 bg-white text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"}`}>
+            </Button>
+            <Button
+              type="button"
+              onClick={() => setSortMode("az")}
+              size="sm"
+              variant={sortMode === "az" ? "default" : "outline"}
+              className={sortMode === "az" ? "rounded-full bg-[#16a34a] text-white hover:bg-[#15803d]" : "rounded-full"}
+            >
               A-Z
-            </button>
-            <button type="button" onClick={() => setSortMode("popular")} className={`rounded-full border px-3 py-1.5 ${sortMode === "popular" ? "border-zinc-900 bg-zinc-900 text-white dark:border-zinc-100 dark:bg-zinc-100 dark:text-zinc-900" : "border-zinc-300 bg-white text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"}`}>
+            </Button>
+            <Button
+              type="button"
+              onClick={() => setSortMode("popular")}
+              size="sm"
+              variant={sortMode === "popular" ? "default" : "outline"}
+              className={sortMode === "popular" ? "rounded-full bg-[#dc2626] text-white hover:bg-[#b91c1c]" : "rounded-full"}
+            >
               Popular
-            </button>
+            </Button>
           </div>
 
           {search.trim() ? (
@@ -195,16 +242,16 @@ export default function Home() {
                             {tool}
                           </a>
                           <div className="flex items-center gap-1">
-                            <button type="button" onClick={() => navigator.clipboard.writeText(tool)} className="rounded-full border border-zinc-300 px-2 py-1 text-[11px] font-semibold text-zinc-700 dark:border-zinc-700 dark:text-zinc-200">
+                            <Button type="button" size="xs" variant="outline" onClick={() => navigator.clipboard.writeText(tool)} className="rounded-full transition active:scale-[0.96] hover:border-[#2563eb] hover:text-[#1d4ed8]">
                               Copy
-                            </button>
-                            <button type="button" onClick={() => toggleFavorite(tool)} className="rounded-full border border-zinc-300 px-2 py-1 text-[11px] font-semibold text-zinc-700 dark:border-zinc-700 dark:text-zinc-200">
+                            </Button>
+                            <Button type="button" size="xs" variant="outline" onClick={() => toggleFavorite(tool)} className={`rounded-full transition active:scale-[0.96] ${favorites.includes(tool) ? "border-[#dc2626] bg-[#dc2626]/10 text-[#b91c1c]" : "hover:border-[#dc2626] hover:text-[#b91c1c]"}`}>
                               <Bookmark className="mr-1 inline size-3" />
                               Favorite
-                            </button>
-                            <button type="button" onClick={() => toggleSaved(tool)} className="rounded-full border border-zinc-300 px-2 py-1 text-[11px] font-semibold text-zinc-700 dark:border-zinc-700 dark:text-zinc-200">
+                            </Button>
+                            <Button type="button" size="xs" variant="outline" onClick={() => toggleSaved(tool)} className={`rounded-full transition active:scale-[0.96] ${savedTools.includes(tool) ? "border-[#2563eb] bg-[#2563eb]/10 text-[#1d4ed8]" : "hover:border-[#2563eb] hover:text-[#1d4ed8]"}`}>
                               Saved
-                            </button>
+                            </Button>
                           </div>
                         </div>
                       </div>
@@ -263,6 +310,29 @@ export default function Home() {
             <Marquee pauseOnHover className="[--duration:24s]">
               {popularTools.map((tool) => (
                 <a key={tool.name} href={tool.href} target="_blank" rel="noopener noreferrer" className="rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200">
+                  {tool.name}
+                </a>
+              ))}
+            </Marquee>
+          </div>
+        </section>
+
+        <section className="mt-6 rounded-3xl border border-zinc-300 bg-white p-4 shadow-[0_12px_30px_rgba(20,20,20,0.08)] dark:border-zinc-700 dark:bg-zinc-900">
+          <div className="rounded-2xl bg-[#1d4ed8] p-4 text-white">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/80">Popular Tools</p>
+            <h2 className="mt-1 text-xl font-semibold">Quick carousel-style strip for trending picks</h2>
+          </div>
+
+          <div className="mt-4 rounded-2xl border border-zinc-200 bg-zinc-50 p-3 dark:border-zinc-700 dark:bg-zinc-950">
+            <Marquee pauseOnHover className="[--duration:18s]">
+              {popularTools.concat(popularTools).map((tool, index) => (
+                <a
+                  key={`${tool.name}-${index}`}
+                  href={tool.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mr-2 rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"
+                >
                   {tool.name}
                 </a>
               ))}
