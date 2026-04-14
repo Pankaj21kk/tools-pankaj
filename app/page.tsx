@@ -159,7 +159,13 @@ export default function Home() {
       <ScrollProgress className="h-1 from-zinc-900 via-zinc-600 to-zinc-300 dark:from-zinc-200 dark:via-zinc-500 dark:to-zinc-700" />
 
       <main className="relative z-10 mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-        <section className="rounded-3xl border border-zinc-300 bg-white p-5 shadow-[0_14px_36px_rgba(20,20,20,0.08)] backdrop-blur sm:p-8 dark:border-zinc-700 dark:bg-zinc-900">
+        <section className="relative overflow-hidden rounded-3xl border border-zinc-300 bg-white p-5 shadow-[0_14px_36px_rgba(20,20,20,0.08)] backdrop-blur sm:p-8 dark:border-zinc-700 dark:bg-zinc-900">
+          <div aria-hidden className="pointer-events-none absolute inset-0">
+            <div className="absolute -top-20 left-1/2 h-44 w-96 -translate-x-1/2 rounded-full bg-white/80 blur-3xl dark:bg-zinc-500/20" />
+            <div className="absolute -bottom-16 right-8 h-32 w-56 rounded-full bg-zinc-200/60 blur-3xl dark:bg-zinc-400/10" />
+          </div>
+
+          <div className="relative z-10">
           <h1 className="mt-4 text-3xl font-bold leading-tight sm:text-5xl">
             Explore Professional Tool Categories
           </h1>
@@ -314,6 +320,7 @@ export default function Home() {
                 </a>
               ))}
             </Marquee>
+          </div>
           </div>
         </section>
 
