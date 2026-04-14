@@ -172,7 +172,7 @@ export function CategoryDetailClient({ category }: { category: ToolCategory }) {
   return (
     <main className="mx-auto w-full max-w-6xl bg-zinc-50 px-4 py-8 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 sm:px-6 lg:px-8">
       {feedback ? (
-        <div className="fixed right-4 top-4 z-50 rounded-full border border-zinc-300 bg-white px-4 py-2 text-xs font-semibold text-zinc-700 shadow-[0_12px_28px_rgba(20,20,20,0.12)] dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100">
+        <div className="fixed left-1/2 top-4 z-50 w-[calc(100%-2rem)] max-w-xs -translate-x-1/2 rounded-full border border-zinc-300 bg-white px-4 py-2 text-center text-xs font-semibold text-zinc-700 shadow-[0_12px_28px_rgba(20,20,20,0.12)] sm:left-auto sm:right-4 sm:w-auto sm:max-w-none sm:translate-x-0 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100">
           {feedback}
         </div>
       ) : null}
@@ -331,11 +331,11 @@ export function CategoryDetailClient({ category }: { category: ToolCategory }) {
               const isFree = freeTools.includes(tool);
               return (
                 <div key={tool} className="rounded-2xl border border-zinc-200 bg-white/85 p-4 text-base font-medium text-zinc-800 shadow-sm transition dark:border-zinc-700 dark:bg-zinc-900/85 dark:text-zinc-100">
-                  <div className="flex items-start justify-between gap-2">
-                    <a href={getOfficialUrl(tool)} target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                    <a href={getOfficialUrl(tool)} target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline break-words">
                       {tool}
                     </a>
-                    <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${isFree ? "bg-zinc-100 text-zinc-700" : "bg-zinc-200 text-zinc-800"}`}>
+                    <span className={`inline-flex w-fit rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${isFree ? "bg-zinc-100 text-zinc-700" : "bg-zinc-200 text-zinc-800"}`}>
                       {isFree ? "Free" : "Paid"}
                     </span>
                   </div>
@@ -371,11 +371,11 @@ export function CategoryDetailClient({ category }: { category: ToolCategory }) {
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {visibleAiTools.map((tool) => (
                 <div key={tool} className="rounded-2xl border border-zinc-200 bg-white/85 p-4 text-base font-medium text-zinc-900 shadow-sm transition dark:border-zinc-700 dark:bg-zinc-900/85 dark:text-zinc-100">
-                  <div className="flex items-start justify-between gap-2">
-                    <a href={getOfficialUrl(tool)} target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                    <a href={getOfficialUrl(tool)} target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline break-words">
                       {tool}
                     </a>
-                    <span className="rounded-full bg-zinc-200 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-zinc-800 dark:bg-zinc-700 dark:text-zinc-200">
+                    <span className="inline-flex w-fit rounded-full bg-zinc-200 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-zinc-800 dark:bg-zinc-700 dark:text-zinc-200">
                       AI
                     </span>
                   </div>

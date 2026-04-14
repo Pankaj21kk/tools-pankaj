@@ -132,7 +132,7 @@ export function LibraryClient({ initialTab = "favorites" }: { initialTab?: Activ
         </div>
 
         {feedback ? (
-          <div className="fixed right-4 top-4 z-50 rounded-full border border-zinc-300 bg-white px-4 py-2 text-xs font-semibold text-zinc-700 shadow-[0_12px_28px_rgba(20,20,20,0.12)] dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100">
+          <div className="fixed left-1/2 top-4 z-50 w-[calc(100%-2rem)] max-w-xs -translate-x-1/2 rounded-full border border-zinc-300 bg-white px-4 py-2 text-center text-xs font-semibold text-zinc-700 shadow-[0_12px_28px_rgba(20,20,20,0.12)] sm:left-auto sm:right-4 sm:w-auto sm:max-w-none sm:translate-x-0 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100">
             {feedback}
           </div>
         ) : null}
@@ -193,9 +193,9 @@ export function LibraryClient({ initialTab = "favorites" }: { initialTab?: Activ
               key={tool}
               className="rounded-2xl border border-zinc-300 bg-white p-4 dark:border-zinc-700 dark:bg-zinc-900"
             >
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">{tool}</h3>
-                <div className="flex flex-wrap gap-2">
+              <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+                <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 break-words">{tool}</h3>
+                <div className="flex w-full flex-wrap gap-2 sm:w-auto">
                   <Button
                     type="button"
                     size="xs"
@@ -232,9 +232,9 @@ export function LibraryClient({ initialTab = "favorites" }: { initialTab?: Activ
               key={tool}
               className="rounded-2xl border border-zinc-300 bg-white p-4 dark:border-zinc-700 dark:bg-zinc-900"
             >
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">{tool}</h3>
-                <div className="flex flex-wrap gap-2">
+              <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+                <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 break-words">{tool}</h3>
+                <div className="flex w-full flex-wrap gap-2 sm:w-auto">
                   <Button
                     type="button"
                     size="xs"

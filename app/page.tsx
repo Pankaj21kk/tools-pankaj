@@ -243,11 +243,11 @@ export default function Home() {
                   ) : (
                     suggestedTools.map((tool) => (
                       <div key={tool} className="rounded-xl border border-zinc-200 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-900">
-                        <div className="flex items-center justify-between gap-2">
-                          <a href={getOfficialUrl(tool)} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-zinc-900 hover:underline dark:text-zinc-100">
+                        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                          <a href={getOfficialUrl(tool)} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-zinc-900 hover:underline dark:text-zinc-100 break-words">
                             {tool}
                           </a>
-                          <div className="flex flex-wrap items-center justify-end gap-1">
+                          <div className="flex w-full flex-wrap items-center gap-1 sm:w-auto sm:justify-end">
                             <Button type="button" size="xs" variant="outline" onClick={() => navigator.clipboard.writeText(tool)} className="rounded-full transition active:scale-[0.96] hover:border-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100">
                               Copy
                             </Button>
