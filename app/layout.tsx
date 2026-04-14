@@ -99,7 +99,7 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
-      <body className="relative min-h-full overflow-x-hidden flex flex-col bg-[var(--brand-50)] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+      <body className="relative min-h-full overflow-x-hidden flex flex-col bg-(--brand-50) text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
         <DecorativeBackground />
 
         <div className="relative z-10 min-h-full flex flex-col">

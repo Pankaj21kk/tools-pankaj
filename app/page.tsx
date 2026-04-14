@@ -150,7 +150,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[var(--brand-50)] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+    <div className="relative min-h-screen bg-(--brand-50) text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
       <Script
         id="home-jsonld"
         type="application/ld+json"

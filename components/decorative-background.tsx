@@ -41,16 +41,7 @@ export function DecorativeBackground() {
 
       {showGlobe ? (
         <div className="absolute left-1/2 top-28 hidden -translate-x-1/2 lg:block opacity-[0.12] dark:opacity-[0.16]">
-          <Globe
-            className="h-120 w-120"
-            config={{
-              width: 680,
-              height: 680,
-              devicePixelRatio: 1.25,
-              mapSamples: 5000,
-              dark: 1,
-            }}
-          />
+          <Globe className="h-120 w-120" />
         </div>
       ) : null}
     </div>
