@@ -171,14 +171,14 @@ export default function Home() {
             <Button
               asChild
               size="sm"
-              className="rounded-full bg-[#00B4D8] px-4 font-semibold text-white shadow-[0_8px_20px_rgba(0,180,216,0.35)] transition active:scale-[0.97] hover:bg-[#48CAE4]"
+              className="rounded-full bg-[#2563eb] px-4 font-semibold text-white shadow-[0_8px_20px_rgba(37,99,235,0.35)] transition active:scale-[0.97] hover:bg-[#1d4ed8]"
             >
               <a href="#catalog">Browse categories</a>
             </Button>
             <Button
               asChild
               size="sm"
-              className="rounded-full bg-[#48CAE4] px-4 font-semibold text-zinc-900 shadow-[0_8px_20px_rgba(72,202,228,0.35)] transition active:scale-[0.97] hover:bg-[#90E0EF]"
+              className="rounded-full bg-[#16a34a] px-4 font-semibold text-white shadow-[0_8px_20px_rgba(22,163,74,0.35)] transition active:scale-[0.97] hover:bg-[#15803d]"
             >
               <a href="/library?tab=favorites">Open favorites</a>
             </Button>
@@ -201,7 +201,7 @@ export default function Home() {
               onClick={() => setSortMode("default")}
               size="sm"
               variant={sortMode === "default" ? "default" : "outline"}
-              className={sortMode === "default" ? "rounded-full bg-[#00B4D8] text-white hover:bg-[#48CAE4]" : "rounded-full"}
+              className={sortMode === "default" ? "rounded-full bg-[#2563eb] text-white hover:bg-[#1d4ed8]" : "rounded-full"}
             >
               Default
             </Button>
@@ -210,7 +210,7 @@ export default function Home() {
               onClick={() => setSortMode("az")}
               size="sm"
               variant={sortMode === "az" ? "default" : "outline"}
-              className={sortMode === "az" ? "rounded-full bg-[#48CAE4] text-zinc-900 hover:bg-[#90E0EF]" : "rounded-full"}
+              className={sortMode === "az" ? "rounded-full bg-[#16a34a] text-white hover:bg-[#15803d]" : "rounded-full"}
             >
               A-Z
             </Button>
@@ -219,7 +219,7 @@ export default function Home() {
               onClick={() => setSortMode("popular")}
               size="sm"
               variant={sortMode === "popular" ? "default" : "outline"}
-              className={sortMode === "popular" ? "rounded-full bg-[#90E0EF] text-zinc-900 hover:bg-[#ADE8F4]" : "rounded-full"}
+              className={sortMode === "popular" ? "rounded-full bg-[#dc2626] text-white hover:bg-[#b91c1c]" : "rounded-full"}
             >
               Popular
             </Button>
@@ -245,11 +245,11 @@ export default function Home() {
                             <Button type="button" size="xs" variant="outline" onClick={() => navigator.clipboard.writeText(tool)} className="rounded-full transition active:scale-[0.96] hover:border-[#00B4D8] hover:text-[#00B4D8]">
                               Copy
                             </Button>
-                            <Button type="button" size="xs" variant="outline" onClick={() => toggleFavorite(tool)} className={`rounded-full transition active:scale-[0.96] ${favorites.includes(tool) ? "border-[#48CAE4] bg-[#48CAE4]/10 text-[#00B4D8]" : "hover:border-[#48CAE4] hover:text-[#00B4D8]"}`}>
+                            <Button type="button" size="xs" variant="outline" onClick={() => toggleFavorite(tool)} className={`rounded-full transition active:scale-[0.96] ${favorites.includes(tool) ? "border-[#dc2626] bg-[#dc2626]/10 text-[#b91c1c]" : "hover:border-[#dc2626] hover:text-[#b91c1c]"}`}>
                               <Bookmark className="mr-1 inline size-3" />
                               Favorite
                             </Button>
-                            <Button type="button" size="xs" variant="outline" onClick={() => toggleSaved(tool)} className={`rounded-full transition active:scale-[0.96] ${savedTools.includes(tool) ? "border-[#00B4D8] bg-[#00B4D8]/10 text-[#00B4D8]" : "hover:border-[#00B4D8] hover:text-[#00B4D8]"}`}>
+                            <Button type="button" size="xs" variant="outline" onClick={() => toggleSaved(tool)} className={`rounded-full transition active:scale-[0.96] ${savedTools.includes(tool) ? "border-[#2563eb] bg-[#2563eb]/10 text-[#1d4ed8]" : "hover:border-[#2563eb] hover:text-[#1d4ed8]"}`}>
                               Saved
                             </Button>
                           </div>

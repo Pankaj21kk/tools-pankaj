@@ -161,7 +161,7 @@ export function LibraryClient({ initialTab = "favorites" }: { initialTab?: Activ
                   <button
                     type="button"
                     onClick={() => removeItem(tool, "saved")}
-                    className="rounded-full px-1.5 py-0.5 text-[10px] font-bold text-zinc-500 transition hover:bg-[#E0FBFC] hover:text-[#00B4D8] dark:text-zinc-300"
+                    className="rounded-full px-1.5 py-0.5 text-[10px] font-bold text-zinc-500 transition hover:bg-[#fef2f2] hover:text-[#b91c1c] dark:text-zinc-300"
                     aria-label={`Remove ${tool} from saved`}
                   >
                     x
@@ -201,7 +201,7 @@ export function LibraryClient({ initialTab = "favorites" }: { initialTab?: Activ
                     size="xs"
                     variant="outline"
                     onClick={() => copyName(tool)}
-                    className="rounded-full border-[#90E0EF] bg-white text-zinc-700 transition active:scale-[0.96] hover:border-[#00B4D8] hover:bg-[#E0FBFC] hover:text-[#00B4D8] dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"
+                    className="rounded-full border-[#d4d4d8] bg-white text-zinc-700 transition active:scale-[0.96] hover:border-[#2563eb] hover:bg-[#eff6ff] hover:text-[#1d4ed8] dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"
                   >
                     <Copy className="h-3.5 w-3.5" /> Copy
                   </Button>
@@ -218,7 +218,7 @@ export function LibraryClient({ initialTab = "favorites" }: { initialTab?: Activ
                     size="xs"
                     variant="outline"
                     onClick={() => removeItem(tool, "favorites")}
-                    className="rounded-full border-[#90E0EF] bg-white text-zinc-700 transition active:scale-[0.96] hover:border-[#48CAE4] hover:bg-[#CAF0F8] hover:text-[#00B4D8] dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"
+                    className="rounded-full border-[#d4d4d8] bg-white text-zinc-700 transition active:scale-[0.96] hover:border-[#dc2626] hover:bg-[#fef2f2] hover:text-[#b91c1c] dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"
                   >
                     <Trash2 className="h-3.5 w-3.5" /> Remove
                   </Button>
@@ -240,7 +240,7 @@ export function LibraryClient({ initialTab = "favorites" }: { initialTab?: Activ
                     size="xs"
                     variant="outline"
                     onClick={() => copyName(tool)}
-                    className="rounded-full border-[#90E0EF] bg-white text-zinc-700 transition active:scale-[0.96] hover:border-[#00B4D8] hover:bg-[#E0FBFC] hover:text-[#00B4D8] dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"
+                    className="rounded-full border-[#d4d4d8] bg-white text-zinc-700 transition active:scale-[0.96] hover:border-[#2563eb] hover:bg-[#eff6ff] hover:text-[#1d4ed8] dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"
                   >
                     <Copy className="h-3.5 w-3.5" /> Copy
                   </Button>
@@ -257,7 +257,7 @@ export function LibraryClient({ initialTab = "favorites" }: { initialTab?: Activ
                     size="xs"
                     variant="outline"
                     onClick={() => removeItem(tool, "saved")}
-                    className="rounded-full border-[#90E0EF] bg-white text-zinc-700 transition active:scale-[0.96] hover:border-[#48CAE4] hover:bg-[#CAF0F8] hover:text-[#00B4D8] dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"
+                    className="rounded-full border-[#d4d4d8] bg-white text-zinc-700 transition active:scale-[0.96] hover:border-[#dc2626] hover:bg-[#fef2f2] hover:text-[#b91c1c] dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"
                   >
                     <Trash2 className="h-3.5 w-3.5" /> Remove
                   </Button>
